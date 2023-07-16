@@ -8,7 +8,7 @@ namespace SapperBL
 
 	public:
 		int GetRowSize() { return rowSize; };
-		int GetColumnSize() { return rowSize; };
+		int GetColumnSize() { return columnSize; };
 
 		Matrix(int _rowSize, int _columnSize)
 		{
@@ -16,8 +16,8 @@ namespace SapperBL
 			rowSize = _rowSize;
 			columnSize = _columnSize;
 
-			CreateDataStructure(data);
-			InitializeDataRand(data, rand);
+			CreateDataStructure();
+			InitializeDataRand(rand);
 		}
 
 		Matrix(const Matrix& other)
@@ -61,7 +61,7 @@ namespace SapperBL
 
 		int** data;
 
-		void CreateDataStructure(int** data)
+		void CreateDataStructure()
 		{
 			data = new int* [rowSize];
 
@@ -70,7 +70,7 @@ namespace SapperBL
 				data[i] = new int[columnSize];
 		}
 		}
-		void InitializeDataRand(int** data, int(generateNumber)())
+		void InitializeDataRand( int(generateNumber)())
 		{
 			for (int i = 0; i < rowSize; i++)
 			{
