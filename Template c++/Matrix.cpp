@@ -7,6 +7,8 @@ namespace SapperBL
 	{
 
 	public:
+		int GetRowSize() { return rowSize; };
+		int GetColumnSize() { return rowSize; };
 
 		Matrix(int _rowSize, int _columnSize)
 		{
