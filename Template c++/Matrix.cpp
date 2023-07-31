@@ -133,21 +133,21 @@ namespace SapperBL
 			int temp;
 			for (int i = 0; i < bombCount; i++)
 			{
-				temp = GetRandomNumber(0, rowSize);
+				temp = GetRandomNumber(0, rowSize-1);
 				while (temp == btemprow)
 				{
-					temp = GetRandomNumber(0, rowSize);
+					temp = GetRandomNumber(0, rowSize-1);
 				}
 				btemprow = temp;
 
-				temp = GetRandomNumber(0, columnSize);
+				temp = GetRandomNumber(0, columnSize-1);
 				while (temp == btempcol)
 				{
-					temp = GetRandomNumber(0, columnSize);
+					temp = GetRandomNumber(0, columnSize-1);
 				}
 				btempcol = temp;
 
-				data[btemprow][btempcol] = 1;
+				data[btemprow][btempcol] = (int)CELL_WITH_BOMB;
 			}
 		}
 
