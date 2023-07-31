@@ -6,8 +6,7 @@ int main()
 
 	Matrix matrix0(matrix);
 
-	cout << matrix.GetNumberByPos(2, 1) << endl;
-	cout << matrix0.GetNumberByPos(2, 1) << endl;
+	matrix.ShowDebug();
 
 	system("pause");
 	return 0;
