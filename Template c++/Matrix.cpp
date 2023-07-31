@@ -32,7 +32,7 @@ namespace SapperBL
 			columnSize = other.columnSize;
 
 			int** otherData = other.data;
-			this->CreateDataStructure();
+			CreateDataStructure();
 
 			for (int i = 0; i < rowSize; i++)
 			{
