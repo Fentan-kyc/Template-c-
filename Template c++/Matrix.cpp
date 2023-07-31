@@ -1,5 +1,5 @@
 #include "Matrix.h"
-
+#define DEBUG = 1
 namespace SapperBL
 {
 
@@ -9,6 +9,7 @@ namespace SapperBL
 	public:
 		int GetRowSize() { return rowSize; };
 		int GetColumnSize() { return columnSize; };
+		int GetNumberByPos(const int& row, const int& column) { return data[row][column]; };
 
 		Matrix(int _rowSize, int _columnSize)
 		{
@@ -25,13 +26,14 @@ namespace SapperBL
 			rowSize = other.rowSize;
 			columnSize = other.columnSize;
 
-			data = new int* [rowSize];
+			int** otherData = other.data;
+			this->CreateDataStructure();
 
 			for (int i = 0; i < rowSize; i++)
 			{
 				for (int j = 0; j < columnSize; j++)
 				{
-
+					data[i][j] = otherData[i][j];
 				}
 			}
 		}
@@ -77,7 +79,6 @@ namespace SapperBL
 				for (int j = 0; j < columnSize; j++) 
 				{
 					data[i][j] = generateNumber();
-					cout << data[i][j] << endl;
 				}
 			}
 		}
