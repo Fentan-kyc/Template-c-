@@ -23,7 +23,7 @@ namespace SapperBL
 			columnSize = _columnSize;
 
 			CreateDataStructure();
-			InitializeDataEmpty();
+			InitializeDataBomb();
 		}
 
 		Matrix(const Matrix& other)
@@ -62,8 +62,7 @@ namespace SapperBL
 			delete[] data;
 		}
 
-		#ifdef DEBUG
-		void ShowDebug() 
+		void Show() 
 		{
 			for (int i = 0; i < rowSize; i++)
 			{
@@ -74,11 +73,11 @@ namespace SapperBL
 				cout << endl;
 			}
 		}
-		#endif // DEBUG
 
 	private:
 		int rowSize;
 		int columnSize;
+		int bombCount = 15;
 
 		int** data;
 
@@ -123,6 +122,42 @@ namespace SapperBL
 					data[i][j] = rand();
 				}
 			}
+		}
+
+		void  InitializeDataBomb()
+		{
+			InitializeDataEmpty();
+
+			int btemprow = 222222222222222;
+			int btempcol = 222222222222222;
+			int temp;
+			for (int i = 0; i < bombCount; i++)
+			{
+				temp = GetRandomNumber(0, rowSize);
+				while (temp == btemprow)
+				{
+					temp = GetRandomNumber(0, rowSize);
+				}
+				btemprow = temp;
+
+				temp = GetRandomNumber(0, columnSize);
+				while (temp == btempcol)
+				{
+					temp = GetRandomNumber(0, columnSize);
+				}
+				btempcol = temp;
+
+				data[btemprow][btempcol] = 1;
+			}
+		}
+
+		int GetRandomNumber(int min, int max)
+		{
+			random_device dev;
+			mt19937 rng(dev());
+			uniform_int_distribution<mt19937::result_type> num(min, max);
+
+			return num(rng);
 		}
 	};
 
